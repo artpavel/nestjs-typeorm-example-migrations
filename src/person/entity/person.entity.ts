@@ -1,31 +1,32 @@
-import { Car } from "src/car/entity/car.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm"
+import { Car } from 'src/car/entity/car.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Person {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    firstName: string;
+  @Column()
+  firstName: string;
 
-    @Column()
-    lastName: string;
+  @Column()
+  lastName: string;
 
-    @Column()
-    age: number;
+  @Column()
+  age: number;
 
-    @OneToMany(() => Car, car => car.person, {
-      eager: true})
-    cars: Car[];
+  @OneToMany(() => Car, (car) => car.person, {
+    eager: true,
+  })
+  cars: Car[];
 
-    constructor(firstName: string, lastName?: string, age?: number);
-    constructor(firstName: string, lastName: string, age?: number);
-    constructor(firstName: string, lastName: string, age: number);
-    constructor(firstName?: string, lastName?: string, age?: number);
-    constructor(firstName?: string, lastName?: string, age?: number) {
-      this.firstName = firstName || '';
-      this.lastName = lastName || '';
-      this.age = age || NaN;
-    }
+  constructor(firstName: string, lastName?: string, age?: number);
+  constructor(firstName: string, lastName: string, age?: number);
+  constructor(firstName: string, lastName: string, age: number);
+  constructor(firstName?: string, lastName?: string, age?: number);
+  constructor(firstName?: string, lastName?: string, age?: number) {
+    this.firstName = firstName || '';
+    this.lastName = lastName || '';
+    this.age = age || NaN;
+  }
 }
